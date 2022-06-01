@@ -16,17 +16,19 @@ app.listen(serverConfig.PORT,()=>{
   console.log(`CRM is running on ${serverConfig.PORT}`);
 });
 
-mongoose.connect(dbConfig.db_url,()=>{
+mongoose.connect(dbConfig.db_url)
+.then(()=>{
   console.log("connected to mongodb");
   init();
-},err => {console.log(err);});
+})
+.catch((err) => {console.log(err);});
 
 
 
 async function init() {
-
+  console.log("init");
     var user = await User.findOne({ userId: "admin" });
-
+    console.log(user);
     if (user) {
       console.log("admin is already present");
         return;
