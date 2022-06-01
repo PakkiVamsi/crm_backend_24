@@ -9,18 +9,18 @@ exports.client = client;
 
 /**
  * Expose a function which will take the following informartion :
- * 
+ *
  * subject,
  * content,
  * recepientEmails,
  * requester,
  * ticketId
- * 
+ *
  * and then make a POST call
  */
 
  exports.sendEmail  = (ticketId, subject, content, emailIds, requester) => {
-    
+
     /**
      * POST call
      *     - URI  : 127.0.0.1:7777/notifServ/api/v1/notifications
@@ -48,12 +48,12 @@ exports.client = client;
     }
 
 
-    client.post("http://127.0.0.1:7777/notifServ/api/v1/notifications",args, (data,response)=>{
+    client.post("https://notify-service-24.herokuapp.com/notifServ/api/v1/notifications",args, (data,response)=>{
        console.log("Request Sent");
        console.log(data);
     });
 
-    
+
 
 
 }
